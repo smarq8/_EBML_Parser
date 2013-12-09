@@ -20,7 +20,7 @@ Filename := "big-buck-bunny_trailer.webm"
 ; Filename := clipboard
 
 ;=============================================================================
-QPX(1)
+; QPX(1)
 
 Gui, Font, , Courier New
 Gui, Add, TreeView, vMTV w900 r25
@@ -29,16 +29,17 @@ Gui, Add, TreeView, vMTV w900 r25
 Dir = D:\tnt\ukonczone\[Coalgirls]_Sword_Art_Online_(1280x720_Blu-ray_FLAC)
 ; Loop, %Dir%\*.mkv 
 {
+
 ; filename := A_LoopFileLongPath ; uncomment while loop, %dir% used
 EBML_New(EBML, FileName)
-EBML_GetAll(ebml)
+; EBML_GetAll(ebml) ; get all items from file
 ;============================================
 ; EBML_SearchItem(ebml, "Segment/Info")
 ; EBML_GetData(ebml, "Segment/Info")
-; EBML_GetAll(ebml, "Segment/Info")
+; EBML_GetAll(ebml, "Segment/Info") ; get all items from "Segment/Info"
 ;============================================
 ; EBML_GetData(ebml, "Segment/Info/MuxingApp")
-EBML_GetData(ebml, "Segment/Info/WritingApp")
+tooltip,% EBML_GetData(ebml, "Segment/Info/WritingApp")
 ; EBML_GetData(ebml, "Segment/Info/Duration")
 ; EBML_GetData(ebml, "Segment/Info/dateutc")
 ; EBML_GetData(ebml, "Segment/Info/SegmentUID")
@@ -59,7 +60,7 @@ EBML_GetAll(ebml, "Segment/Info")
 }
 ; Tooltip(QPX())
 Gui, Show, x0
-; array_list(ebml)
+array_list(ebml)
 Return
 
 
